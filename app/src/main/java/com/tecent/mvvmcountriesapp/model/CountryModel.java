@@ -1,7 +1,4 @@
 package com.tecent.mvvmcountriesapp.model;
-
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 import com.google.gson.annotations.SerializedName;
 
 public class CountryModel {
