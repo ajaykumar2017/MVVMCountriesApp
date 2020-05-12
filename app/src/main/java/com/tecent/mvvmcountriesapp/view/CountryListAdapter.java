@@ -12,7 +12,6 @@ import butterknife.ButterKnife;
 import com.tecent.mvvmcountriesapp.R;
 import com.tecent.mvvmcountriesapp.model.CountryModel;
 import java.util.List;
-import org.w3c.dom.Text;
 
 public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.CountryViewHolder> {
 
@@ -59,6 +58,7 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
     void bind(CountryModel country) {
       countryName.setText(country.getCountryName());
       countryCapital.setText(country.getCapital());
+      Util.loadImage(countryImage, country.getFlag(), Util.getProgressDrawable(countryImage.getContext()));
     }
   }
 }
