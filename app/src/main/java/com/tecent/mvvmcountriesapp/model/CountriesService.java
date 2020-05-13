@@ -1,25 +1,18 @@
 package com.tecent.mvvmcountriesapp.model;
-
+import com.tecent.mvvmcountriesapp.di.DaggerApiComponent;
 import io.reactivex.Single;
 import java.util.List;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
+import javax.inject.Inject;
 
 public class CountriesService {
-  private static final String BASE_URL = "https://raw.githubusercontent.com/";
 
   private static CountriesService instance;
 
-  private CountriesApi api = new Retrofit.Builder()
-      .baseUrl(BASE_URL)
-      .addConverterFactory(GsonConverterFactory.create())
-      .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-      .build()
-      .create(CountriesApi.class);
+  @Inject
+  public CountriesApi api;
 
   private CountriesService() {
-
+    DaggerApiComponent.create().inject(this);
   }
 
   public static CountriesService getInstance() {
